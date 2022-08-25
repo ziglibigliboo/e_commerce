@@ -31,6 +31,20 @@ const productSchema = new mongoose.Schema({
             }
         }
     ],
+    category: {
+        type: String,
+        required: [true, "Please Enter Product Category"]
+    },
+    Stock: {
+        type: Number,
+        required: [true, "Please enter product stock"],
+        maxLength: [4, "cannot exceed 4 chars"],
+        default: 1,
+    },
+    numberOfReviews: {
+        type: Number,
+        default: 0
+    },
     reviews: [
         {
 
@@ -48,6 +62,11 @@ const productSchema = new mongoose.Schema({
             },
         },
     ],
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref:"User",
+        required:true, 
+    },
     createdAt: {
         type: Date,
         default: Date.now,
